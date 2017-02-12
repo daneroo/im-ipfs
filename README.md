@@ -1,6 +1,5 @@
 # IPFS start playing!
 
-
 - Can I bootstrap a discovery system off IPFS
 - Can I sync scrobblecast data back through IPFS?
 
@@ -13,6 +12,12 @@
 - Bootstrap a pair of private nodes (docker-compose)
 - Figure out discovery....
 
+## Digital Ocean
+```
+./up-digitalocean.sh
+eval "$(docker-machine env ipfs-digitalocean)"
+open http://$(docker-machine ip ipfs-digitalocean):8080/
+```
 ## Docker
 _Note: ipfs is the name of the container, executable and alias!_
 ```
