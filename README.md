@@ -17,7 +17,10 @@
 ./up-digitalocean.sh
 eval "$(docker-machine env ipfs-digitalocean)"
 open http://$(docker-machine ip ipfs-digitalocean):8080/
+
+./down.sh
 ```
+
 ## Docker
 _Note: ipfs is the name of the container, executable and alias!_
 ```
