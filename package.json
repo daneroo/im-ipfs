@@ -1,0 +1,25 @@
+{
+  "name": "im-ipfs",
+  "version": "1.0.0",
+  "description": "Connect ipfs pubsub peers",
+  "main": "index.js",
+  "dependencies": {
+    "ipfs-api": "^14.1.1"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daneroo/im-ipfs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daneroo/im-ipfs/issues"
+  },
+  "homepage": "https://github.com/daneroo/im-ipfs#readme"
+}

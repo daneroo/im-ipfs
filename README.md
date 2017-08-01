@@ -1,5 +1,6 @@
 # IPFS start playing!
 
+- use 
 - Can I bootstrap a discovery system off IPFS
 - Can I sync scrobblecast data back through IPFS?
 
@@ -27,10 +28,10 @@ _Note: ipfs is the name of the container, executable and alias!_
 # - to mount volumes
 mkdir -p data/export data/ipfs
 chmod a+rwx data/export data/ipfs
-docker run -d --name ipfs -v $(pwd)/data/export:/export -v $(pwd)/data/ipfs:/data/ipfs -p 8080:8080 -p 4001:4001 -p 5001:5001 ipfs/go-ipfs:latest
+docker run -d --name ipfs -v $(pwd)/data/export:/export -v $(pwd)/data/ipfs:/data/ipfs -p 8080:8080 -p 4001:4001 -p 5001:5001 ipfs/go-ipfs:v0.4.10 --enable-pubsub-experiment
 
 # - no volumes
-docker run -d --name ipfs -p 8080:8080 -p 4001:4001 -p 5001:5001 ipfs/go-ipfs:latest
+docker run -d --name ipfs -p 8080:8080 -p 4001:4001 -p 5001:5001 ipfs/go-ipfs:v0.4.10 --enable-pubsub-experiment
 
 # - alias
 alias ipfs='docker exec -i ipfs ipfs'
@@ -42,6 +43,17 @@ open http://localhost:5001/webui
 ## List peeers
 ```
 ipfs swarm peers
+```
+
+## Connect local peers to swarm
+```
+ipfs id|jq -r .ID
+ipfsconfig|grep 192
+
+ipfs swarm connect /ip4/192.168.5.142/tcp/4001/ipfs/QmacJoJLQecdQMAuUdzGUxUjA5b42Z33sBCx8o8nN3pbgW
+ipfs swarm connect /ip4/192.168.5.142/tcp/4002/ipfs/QmXU7AuWR4LgHrwdDNVqm2q8zoSdcr6u63dg2k1otG1Vab
+ipfs swarm connect /ip4/192.168.5.127/tcp/4001/ipfs/QmTcUJMGZNjdUEAY9JNrcM9FHjEkZeo9mTkYqUQqLxSq5b
+
 ```
 
 ## show my config (PeerId)
