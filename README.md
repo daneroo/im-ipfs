@@ -28,10 +28,10 @@ _Note: ipfs is the name of the container, executable and alias!_
 # - to mount volumes
 mkdir -p data/export data/ipfs
 chmod a+rwx data/export data/ipfs
-docker run -d --name ipfs -v $(pwd)/data/export:/export -v $(pwd)/data/ipfs:/data/ipfs -p 8080:8080 -p 4001:4001 -p 5001:5001 ipfs/go-ipfs:v0.4.10 --enable-pubsub-experiment
+docker run -d --name ipfs -v $(pwd)/data/export:/export -v $(pwd)/data/ipfs:/data/ipfs -p 8080:8080 -p 4001:4001 -p 5001:5001 ipfs/go-ipfs:v0.4.12 --enable-pubsub-experiment
 
 # - no volumes
-docker run -d --name ipfs -p 8080:8080 -p 4001:4001 -p 5001:5001 ipfs/go-ipfs:v0.4.10 --enable-pubsub-experiment
+docker run --rm -d --name ipfs -p 8080:8080 -p 4001:4001 -p 5001:5001 ipfs/go-ipfs:v0.4.12 --enable-pubsub-experiment
 
 # - alias
 alias ipfs='docker exec -i ipfs ipfs'
@@ -100,4 +100,15 @@ open http://localhost:8080/ipns/scrobblecast.imetrical.net/
 # - open remote
 open https://ipfs.io/ipns/scrobblecast.imetrical.net/
 
+```
+
+### PubSub
+Try to get pubsub working from 
+-local machines
+-remote machines (digital ocean/ now)
+```
+ipfs daemon --enable-pubsub-experiment
+ipfs pubsub sub scrobl
+ipfs pubsub pub scrobl "hello world"
+while true; do ipfs pubsub pub scrobl "hello from $(hostname)"; sleep 5;done
 ```

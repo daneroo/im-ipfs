@@ -25,11 +25,9 @@ function int64NanosToDate (seqno) { // seqno is a buffer of 8 bytes
   return new Date(millis)
 }
 async function main () {
-  console.log('api', Object.keys(ipfs.pubsub))
+  console.log('api for ipfs.pubsub', Object.keys(ipfs.pubsub).join(','))
 
   const topic = 'scrobl'
-  const l = await ipfs.pubsub.ls()
-  console.log('ls', l)
 
   const receiveMsg = (msg) => {
     const rest = {
@@ -44,11 +42,25 @@ async function main () {
   }
   ipfs.pubsub.subscribe(topic, receiveMsg)
 
-  setInterval(() => {
-    ipfs.pubsub.publish(topic, Buffer.from(`hello@${new Date().toISOString()}\n`))
-      .catch(err => {
-        console.log('pub:err', err)
-      })
-  }, 3000)
+  // publish ping
+  setInterval(async () => {
+    try {
+      await ipfs.pubsub.publish(topic, Buffer.from(`hello@${new Date().toISOString()}\n`))
+    } catch (err) {
+      console.log('pub:err', err)
+    }
+  }, 5000)
+
+  // list topics and peers
+  setInterval(async () => {
+    try {
+      const topics = await ipfs.pubsub.ls()
+      console.log('pub:topics', topics)
+      const peers = await ipfs.pubsub.peers(topic)
+      console.log('pub:peers', peers)
+    } catch (err) {
+      console.log('pub:err', err)
+    }
+  }, 10000)
 }
 main()

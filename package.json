@@ -4,10 +4,10 @@
   "description": "Connect ipfs pubsub peers",
   "main": "index.js",
   "dependencies": {
-    "ipfs-api": "^14.1.1"
+    "ipfs-api": "^15.0.2"
   },
   "devDependencies": {
-    "standard": "^10.0.2"
+    "standard": "^10.0.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
