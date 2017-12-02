@@ -1,7 +1,7 @@
 # IPFS start playing!
 
-- use 
-- Can I bootstrap a discovery system off IPFS
+- Can I bootstrap a discovery system off IPFS: yes with pubsub
+- Can I connect from inside docker (minimal ports? 4001,5001 inside swarm)
 - Can I sync scrobblecast data back through IPFS?
 
 ## References
